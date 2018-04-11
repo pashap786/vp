@@ -2,6 +2,7 @@ package com.vp;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 import java.util.logging.Logger;
 
 public class ViperThread implements Runnable {
@@ -32,7 +33,9 @@ public class ViperThread implements Runnable {
 				httpCon.connect();
 				log.info(" opened connection. Run #"+x);
 				//61700
-				Thread.sleep(waitTime);
+				Random r = new Random();
+				int tim = r.nextInt(waitTime - 35000 + 1) + 35000;
+				Thread.sleep(tim);
 				httpCon.disconnect();
 				log.info(" closed connection Run#"+x);
 			}
