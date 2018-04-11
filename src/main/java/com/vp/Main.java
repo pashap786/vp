@@ -5,11 +5,14 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 public class Main {
 
 	private static String testString = "https://www.youtube.com/watch?v=CwpUFZpQHb4";
 
+
+	
 	public static void main(String[] args) {
 		URL url = null;
 		boolean validUrl = false;

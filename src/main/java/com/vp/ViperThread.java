@@ -2,8 +2,11 @@ package com.vp;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.logging.Logger;
 
 public class ViperThread implements Runnable {
+	
+	private static Logger log = Logger.getLogger(ViperThread.class.getName());
 	
 	private int times;
 	private int waitTime;
@@ -24,14 +27,14 @@ public class ViperThread implements Runnable {
 			HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
 			for (int x = 0; x < times; x++) {
 				String user = UserAgents.ieAgents();
-				System.out.println("User agent: " + user);
+				log.info("User agent: " + user);
 				httpCon.addRequestProperty("User-Agent", user);
 				httpCon.connect();
-				System.out.println(" opened connection. Run #"+x);
+				log.info(" opened connection. Run #"+x);
 				//61700
 				Thread.sleep(waitTime);
 				httpCon.disconnect();
-				System.out.println(" closed connection Run#"+x);
+				log.info(" closed connection Run#"+x);
 			}
 			System.out.println("EXITING");
 		} catch (Exception e) {
